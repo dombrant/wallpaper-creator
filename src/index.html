@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wallpaper Creator</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="#" />
+
+    <!-- build:css -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- endbuild -->
+  </head>
+  <body>
+    <header>Wallpaper Creator</header>
+    <section class="main-section">
+      <div class="device-select">
+        <h3>1. Select your device</h3>
+        <select name="" id="device-select">
+          <optgroup label="iPhone">
+            <option value="iPhone XS Max/11 Pro Max">
+              iPhone XS Max/11 Pro Max
+            </option>
+            <option value="iPhone X/XS/11 Pro">iPhone X/XS/11 Pro </option>
+            <option value="iPhone XR/11">iPhone XR/11</option>
+          </optgroup>
+          <optgroup label="Android"></optgroup>
+        </select>
+      </div>
+      <div class="image-upload">
+        <h3>2. Upload an image</h3>
+        <input
+          type="file"
+          id="image"
+          name="image"
+          accept="image/png, image/jpeg"
+        />
+      </div>
+      <div class="button-container">
+        <button>Create wallpaper</button>
+      </div>
+    </section>
+
+    <!-- build:js -->
+    <script type="module" src="js/script.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
