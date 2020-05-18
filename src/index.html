@@ -18,32 +18,34 @@
   <body>
     <header>Wallpaper Creator</header>
     <section class="main-section">
-      <div>
-        <h3>1. Select your device</h3>
-        <select id="device-select" name="device-select">
-          <optgroup label="iPhone">
-            <option value="iPhone11ProMax">iPhone 11 Pro Max/XS Max</option>
-            <option value="iPhone11Pro">iPhone 11 Pro/XS/X</option>
-            <option value="iPhone11">iPhone 11/XR</option>
-            <option value="iPhone8Plus">iPhone 8 Plus/7 Plus/6 Plus</option>
-            <option value="iPhoneSE">iPhone SE (2020)/8/7/6</option>
-          </optgroup>
-          <optgroup label="Android">
-            <option value="googlePixel4XL">Google Pixel 4 XL</option>
-            <option value="googlePixel4">Google Pixel 4</option>
-            <option value="samsungGalaxyS20">Samsung Galaxy S20</option>
-            <option value="motoG8">Moto G8</option>
-          </optgroup>
-        </select>
-      </div>
-      <div class="image-upload">
-        <h3>2. Upload an image</h3>
-        <input
-          type="file"
-          id="image"
-          name="image"
-          accept="image/png, image/jpeg"
-        />
+      <div class="vertical-center">
+        <div>
+          <h3>1. Select your device</h3>
+          <select name="device-select">
+            <optgroup label="iPhone">
+              <option value="iPhone11ProMax">iPhone 11 Pro Max/XS Max</option>
+              <option value="iPhone11Pro">iPhone 11 Pro/XS/X</option>
+              <option value="iPhone11">iPhone 11/XR</option>
+              <option value="iPhone8Plus">iPhone 8 Plus/7 Plus/6 Plus</option>
+              <option value="iPhoneSE">iPhone SE (2020)/8/7/6</option>
+            </optgroup>
+            <optgroup label="Android">
+              <option value="googlePixel4XL">Google Pixel 4 XL</option>
+              <option value="googlePixel4">Google Pixel 4</option>
+              <option value="samsungGalaxyS20">Samsung Galaxy S20</option>
+              <option value="motoG8">Moto G8</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="image-upload">
+          <h3>2. Upload an image</h3>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/png, image/jpeg"
+          />
+        </div>
       </div>
       <div class="button-container">
         <button>Create wallpaper</button>
