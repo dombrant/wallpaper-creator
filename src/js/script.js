@@ -1,4 +1,7 @@
+import getDimensions from "./getDimensions.js";
 import activateSpinner from "./activateSpinner.js";
-import devices from "./devices.js";
 
-document.querySelector("button").addEventListener("click", activateSpinner);
+document.querySelector("button").addEventListener("click", () => {
+  const { width, height } = getDimensions();
+  activateSpinner();
+});
