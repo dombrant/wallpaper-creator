@@ -1,7 +1,6 @@
 {
   "name": "wallpaper-creator",
   "version": "1.0.0",
-  "type": "module",
   "main": "index.html",
   "license": "MIT",
   "dependencies": {
@@ -16,9 +15,9 @@
     "gulp-html-replace": "^1.6.2",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
-    "gulp-strip-debug": "^3.0.0",
     "gulp-terser": "^1.2.0",
+    "merge-stream": "^2.0.0",
     "postcss-uncss": "^0.17.0",
-    "pretty-bytes": "^5.3.0"
+    "uncss": "^0.17.3"
   }
 }

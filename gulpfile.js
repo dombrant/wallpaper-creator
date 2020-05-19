@@ -1,29 +1,30 @@
-import gulp from "gulp";
-import { red } from "chalk";
-import del from "del";
-import plumber from "gulp-plumber";
-import postcss from "gulp-postcss";
-import uncss from "postcss-uncss";
-import cssnano from "cssnano";
-import concat from "gulp-concat";
-import stripDebug from "gulp-strip-debug";
-import terser from "gulp-terser";
-import htmlReplace from "gulp-html-replace";
-import { statSync } from "fs";
-import prettyBytes from "pretty-bytes";
+const gulp = require("gulp");
+const chalk = require("chalk");
+const del = require("del");
+const plumber = require("gulp-plumber");
+const postcss = require("gulp-postcss");
+const uncss = require("postcss-uncss");
+const cssnano = require("cssnano");
+const concat = require("gulp-concat");
+const terser = require("gulp-terser");
+const htmlReplace = require("gulp-html-replace");
+const merge = require("merge-stream");
 
 const deleteFiles = async (extension = "", directory = "dist") => {
   try {
     await del(`${directory}/*${extension}`);
   } catch (error) {
     console.log(
-      `${red(`Error deleting ${extension} files in dist folder`)}: ${error}`
+      `${chalk.red(
+        `Error deleting ${extension} files in dist folder`
+      )}: ${error}`
     );
   }
   // Delete any files in the directory argument matching the extension argument
 };
 
-const plumberErrorHandler = (error) => console.log(`${red("Error:")} ${error}`);
+const plumberErrorHandler = (error) =>
+  console.log(`${chalk.red("Error:")} ${error}`);
 // Create a function for handling errors caught by the plumber plugin
 
 const css = async () => {
@@ -53,15 +54,23 @@ const js = async () => {
   deleteFiles(".js");
 
   return new Promise((resolve, reject) => {
-    gulp
+    const stackBlur = gulp
+      .src("./node_modules/stackblur-canvas/dist/stackblur-es.js")
+      .pipe(plumber({ errorHandler: plumberErrorHandler }))
+      .pipe(terser())
+      .pipe(gulp.dest("dist"))
+      .on("error", reject);
+
+    const main = gulp
       .src("src/js/**/*.js")
       .pipe(plumber({ errorHandler: plumberErrorHandler }))
-      .pipe(stripDebug())
       .pipe(terser())
-      .pipe(concat("script.min.js"))
+      // .pipe(concat("script.min.js"))
       .pipe(gulp.dest("dist"))
       .on("error", reject)
       .on("end", resolve);
+
+    return merge(stackBlur, main);
   });
 };
 
@@ -75,7 +84,10 @@ const html = async () => {
       .pipe(
         htmlReplace({
           css: "dist/style.min.css",
-          js: "dist/script.min.js",
+          js: {
+            src: "dist/script.js",
+            tpl: `<script type="module" src="%s"></script>`,
+          },
         })
       )
       .pipe(gulp.dest("./"))
@@ -84,33 +96,11 @@ const html = async () => {
   });
 };
 
-const logCssSize = () =>
-  new Promise((resolve, reject) => {
-    try {
-      let cssSize = statSync("dist/style.min.css").size;
-      resolve(console.log(`CSS Size Minified: ${prettyBytes(cssSize)}`));
-      // Use prettyBytes to display the number of bytes in the main CSS file in Kb or Mb
-    } catch (error) {
-      reject(error);
-    }
-  });
-
-const logJsSize = () =>
-  new Promise((resolve, reject) => {
-    try {
-      let jsSize = statSync("dist/script.min.js").size;
-      resolve(console.log(`JS Size Minified: ${prettyBytes(jsSize)}`));
-      // Use prettyBytes to display the number of bytes in the main JS file in Kb or Mb
-    } catch (error) {
-      reject(error);
-    }
-  });
-
 const watch = () => {
-  gulp.watch("src/css/**/*.css", gulp.series(css, logCssSize));
-  gulp.watch("src/js/**/*.js", gulp.series(js, logJsSize));
+  gulp.watch("src/css/**/*.css", css);
+  gulp.watch("src/js/**/*.js", js);
   gulp.watch("src/index.html", html);
 };
 
-gulp.task("default", gulp.series(css, js, html, logCssSize, logJsSize));
-gulp.task("watch", gulp.series(css, js, html, logCssSize, logJsSize, watch));
+gulp.task("default", gulp.series(css, js, html));
+gulp.task("watch", gulp.series(css, js, html, watch));

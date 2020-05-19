@@ -1,0 +1,1 @@
+const activateSpinner=()=>{document.querySelector(".main-section").innerHTML='<div class="vertical-center">\n    <h3>Generating wallpaper</h3>\n    <div class="spinner"></div>\n  </div>'};export default activateSpinner;

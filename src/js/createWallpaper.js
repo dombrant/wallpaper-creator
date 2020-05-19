@@ -1,4 +1,4 @@
-import * as stackBlur from "./stackblur-es.min.js";
+import * as stackBlur from "./stackblur-es.js";
 
 const createWallpaper = () => {};
 
