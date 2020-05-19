@@ -19,12 +19,15 @@ const checkForImage = () => {
 
 const getImage = () => {
   return new Promise((resolve, reject) => {
-    const image = input.files[0];
     const reader = new FileReader();
     reader.onload = (event) => {
-      resolve(event.target.result);
+      const image = new Image();
+      image.onload = () => {
+        resolve(image.src);
+      };
+      image.src = event.target.result;
     };
-    reader.readAsDataURL(image);
+    reader.readAsDataURL(input.files[0]);
   });
 };
 
