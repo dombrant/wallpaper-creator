@@ -4,6 +4,9 @@
   "type": "module",
   "main": "index.html",
   "license": "MIT",
+  "dependencies": {
+    "stackblur-canvas": "^2.3.0"
+  },
   "devDependencies": {
     "chalk": "^4.0.0",
     "cssnano": "^4.1.10",

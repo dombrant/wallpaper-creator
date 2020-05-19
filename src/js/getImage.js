@@ -23,7 +23,7 @@ const getImage = () => {
     reader.onload = (event) => {
       const image = new Image();
       image.onload = () => {
-        resolve(image.src);
+        resolve(image);
       };
       image.src = event.target.result;
     };

@@ -1,6 +1,9 @@
 import getDimensions from "./getDimensions.js";
 import { checkForImage, getImage } from "./getImage.js";
 import activateSpinner from "./activateSpinner.js";
+import createWallpaper from "./createWallpaper.js";
+
+createWallpaper();
 
 document.querySelector("button").addEventListener("click", async () => {
   const { width, height } = getDimensions();
