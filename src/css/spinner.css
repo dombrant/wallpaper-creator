@@ -5,7 +5,6 @@
   border-radius: 50%;
   border-top-color: var(--light-blue-primary);
   animation: spin 1s ease-in-out infinite;
-  -webkit-animation: spin 1s ease-in-out infinite;
 }
 
 @keyframes spin {

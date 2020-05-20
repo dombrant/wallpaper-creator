@@ -33,7 +33,7 @@ const css = async () => {
   const postCssPlugins = [
     uncss({
       html: ["src/index.html"],
-      ignore: [],
+      ignore: [".spinner"],
     }),
     cssnano(),
   ];
