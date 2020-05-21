@@ -4,6 +4,7 @@
   "main": "index.html",
   "license": "MIT",
   "dependencies": {
+    "sharp": "^0.25.3",
     "stackblur-canvas": "^2.3.0"
   },
   "devDependencies": {
