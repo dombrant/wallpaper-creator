@@ -1,9 +1,9 @@
 const sharp = require("sharp");
 
-const transform = async (width, height) => {
+const createWallpaper = async (width, height) => {
   try {
     await sharp("./test2.jpg")
-      .resize({ width: 300, height: 300 })
+      .resize({ width: width, height: height / 3 })
       .toFile("./test2-transformed.jpg");
     await sharp("./test.jpg")
       .resize({
@@ -12,7 +12,7 @@ const transform = async (width, height) => {
         height: height,
       })
       .blur(100)
-      .composite([{ input: "test2-transformed.jpg" }])
+      .composite([{ input: "./test2-transformed.jpg" }])
       .toFile("./test-transformed.jpg");
   } catch (error) {
     console.log(error);
@@ -24,8 +24,10 @@ exports.handler = async (event, context) => {
   const width = event.body.width;
   const height = event.body.height;
 
+  // await createWallpaper(width, height);
+
   return {
     statusCode: 200,
-    body: "Success!",
+    body: `${width}, ${height}`,
   };
 };
