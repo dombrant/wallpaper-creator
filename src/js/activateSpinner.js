@@ -3,7 +3,6 @@ const activateSpinner = () => {
     <div class="vertical-center">
       <h3>Generating wallpaper</h3>
       <div class="spinner"></div>
-      <canvas></canvas>
     </div>`;
 };
 

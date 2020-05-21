@@ -12,7 +12,7 @@ document.querySelector("button").addEventListener("click", async () => {
     activateSpinner();
     // Activate the spinner after the image is loaded
     // Otherwise the image can't be leading becuase activateSpinner() removes the input tag from the HTML
-    createWallpaper();
+    createWallpaper(width, height);
   } catch (error) {
     return error;
   }

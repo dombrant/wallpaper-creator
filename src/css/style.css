@@ -44,6 +44,12 @@ button:active {
   transform: scale(1);
 }
 
-canvas {
-  visibility: hidden;
+.canvas-container {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  display: none;
 }
