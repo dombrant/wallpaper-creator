@@ -1,1 +1,0 @@
-import*as stackBlur from"./stackblur-es.js";const createWallpaper=(e,t)=>{document.querySelector("canvas").getContext("2d").drawImage(document.querySelector("img"),0,0,1e3,1200)};export default createWallpaper;

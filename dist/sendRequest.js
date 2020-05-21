@@ -1,0 +1,1 @@
+const sendRequest=async(t,e)=>{try{return(await fetch("/api",{method:"POST",body:JSON.stringify({width:t,height:e})})).json()}catch(t){return t}};export default sendRequest;

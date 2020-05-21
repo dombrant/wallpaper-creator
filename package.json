@@ -4,8 +4,7 @@
   "main": "index.html",
   "license": "MIT",
   "dependencies": {
-    "sharp": "^0.25.3",
-    "stackblur-canvas": "^2.3.0"
+    "sharp": "^0.25.3"
   },
   "devDependencies": {
     "chalk": "^4.0.0",
@@ -17,7 +16,6 @@
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
     "gulp-terser": "^1.2.0",
-    "merge-stream": "^2.0.0",
     "postcss-uncss": "^0.17.0",
     "uncss": "^0.17.3"
   }

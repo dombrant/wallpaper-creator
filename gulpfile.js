@@ -8,7 +8,6 @@ const cssnano = require("cssnano");
 const concat = require("gulp-concat");
 const terser = require("gulp-terser");
 const htmlReplace = require("gulp-html-replace");
-const merge = require("merge-stream");
 
 const deleteFiles = async (extension = "", directory = "dist") => {
   try {
@@ -54,14 +53,7 @@ const js = async () => {
   deleteFiles(".js");
 
   return new Promise((resolve, reject) => {
-    const stackBlur = gulp
-      .src("./node_modules/stackblur-canvas/dist/stackblur-es.js")
-      .pipe(plumber({ errorHandler: plumberErrorHandler }))
-      .pipe(terser())
-      .pipe(gulp.dest("dist"))
-      .on("error", reject);
-
-    const main = gulp
+    return gulp
       .src("src/js/**/*.js")
       .pipe(plumber({ errorHandler: plumberErrorHandler }))
       .pipe(terser())
@@ -69,8 +61,6 @@ const js = async () => {
       .pipe(gulp.dest("dist"))
       .on("error", reject)
       .on("end", resolve);
-
-    return merge(stackBlur, main);
   });
 };
 

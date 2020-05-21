@@ -20,4 +20,12 @@ const transform = async (width, height) => {
   console.log("Done!");
 };
 
-transform(1242, 2688);
+exports.handler = async (event, context) => {
+  const width = event.body.width;
+  const height = event.body.height;
+
+  return {
+    statusCode: 200,
+    body: "Success!",
+  };
+};
