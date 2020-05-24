@@ -16,7 +16,8 @@ const checkForImage = () => {
   });
 };
 
-const getImage = () => {
+const getImage = async () => {
+  await checkForImage();
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = (event) => resolve(event.target.result);
@@ -24,4 +25,4 @@ const getImage = () => {
   });
 };
 
-export { checkForImage, getImage };
+export default getImage;

@@ -43,7 +43,7 @@ const css = async () => {
       .pipe(plumber({ errorHandler: plumberErrorHandler }))
       .pipe(concat("style.min.css"))
       .pipe(postcss(postCssPlugins))
-      .pipe(gulp.dest("dist"))
+      .pipe(gulp.dest("./dist"))
       .on("error", reject)
       .on("end", resolve);
   });
@@ -53,14 +53,16 @@ const js = async () => {
   deleteFiles(".js");
 
   return new Promise((resolve, reject) => {
-    return gulp
-      .src("src/js/**/*.js")
-      .pipe(plumber({ errorHandler: plumberErrorHandler }))
-      .pipe(terser())
-      // .pipe(concat("script.min.js"))
-      .pipe(gulp.dest("dist"))
-      .on("error", reject)
-      .on("end", resolve);
+    return (
+      gulp
+        .src("src/js/**/*.js")
+        .pipe(plumber({ errorHandler: plumberErrorHandler }))
+        .pipe(terser())
+        // .pipe(concat("script.min.js"))
+        .pipe(gulp.dest("./dist"))
+        .on("error", reject)
+        .on("end", resolve)
+    );
   });
 };
 
@@ -73,14 +75,14 @@ const html = async () => {
       .pipe(plumber({ errorHandler: plumberErrorHandler }))
       .pipe(
         htmlReplace({
-          css: "dist/style.min.css",
+          css: "style.min.css",
           js: {
-            src: "dist/script.js",
+            src: "script.js",
             tpl: `<script type="module" src="%s"></script>`,
           },
         })
       )
-      .pipe(gulp.dest("./"))
+      .pipe(gulp.dest("./dist"))
       .on("error", reject)
       .on("end", resolve);
   });
