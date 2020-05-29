@@ -1,9 +1,13 @@
 {
   "name": "wallpaper-creator",
   "version": "1.0.0",
-  "main": "index.html",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
   "license": "MIT",
   "dependencies": {
+    "express": "^4.17.1",
     "sharp": "^0.25.3"
   },
   "devDependencies": {
