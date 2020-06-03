@@ -1,7 +1,7 @@
-const input = document.querySelector("input");
-
 const checkForImage = () => {
   return new Promise((resolve, reject) => {
+    const input = document.querySelector("input");
+
     if (input.files.length === 0) {
       document.querySelector(".main-section").innerHTML = `
       <h3 class="vertical-center"> Please upload one image </h3> 
@@ -16,13 +16,4 @@ const checkForImage = () => {
   });
 };
 
-const getImage = async () => {
-  await checkForImage();
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = (event) => resolve(event.target.result);
-    reader.readAsDataURL(input.files[0]);
-  });
-};
-
-export default getImage;
+export default checkForImage;
