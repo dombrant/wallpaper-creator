@@ -5,10 +5,11 @@ import sendRequest from "./sendRequest.js";
 document.querySelector("button").addEventListener("click", async () => {
   try {
     await checkForImage();
-    activateSpinner();
-    // Activate the spinner after the image is checked
-    // Otherwise the image can't be leading becuase activateSpinner() removes the input tag from the HTML
     const request = await sendRequest();
+    console.log(request);
+    activateSpinner();
+    // Activate the spinner after the image is sent
+    // Otherwise the image can't be located becuase activateSpinner() removes the input tag from the HTML
   } catch (error) {
     return error;
   }

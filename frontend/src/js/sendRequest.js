@@ -13,7 +13,7 @@ const sendRequest = async () => {
       method: "POST",
       body: formData,
     });
-    return response.json();
+    return response;
   } catch (error) {
     return error;
   }
