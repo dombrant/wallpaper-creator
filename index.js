@@ -16,18 +16,20 @@ app.post("/api", upload.single("image"), async (request, response) => {
   if (!request.file) {
     return response
       .status(400)
-      .send(`Please upload a file in JPG or PNG format`);
+      .send({ msg: `Please upload a file in JPG or PNG format` });
   }
 
   try {
-    createWallpaper(
+    const wallpaper = await createWallpaper(
       request.file.buffer,
       parseInt(request.body.width),
       parseInt(request.body.height)
     );
-    return response.status(200).send("It worked!");
+    return response.status(200).send({ file: wallpaper });
   } catch (error) {
-    return response.status(500).send(`Error processing image: ${error}`);
+    return response
+      .status(500)
+      .send({ msg: `Error processing image: ${error}` });
   }
 });
 
