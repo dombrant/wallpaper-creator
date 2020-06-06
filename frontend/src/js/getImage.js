@@ -1,4 +1,4 @@
-const checkForImage = () => {
+const getImage = () => {
   return new Promise((resolve, reject) => {
     const input = document.querySelector("input");
 
@@ -9,11 +9,11 @@ const checkForImage = () => {
         <button onclick="location.reload()">Retry</button> 
       </div>`;
       // Display a message in case the user clicks the create wallpaper button without uploading an image;
-      reject("Please upload one image");
+      reject("Please upload an file in JPG or PNG format");
     } else {
-      resolve();
+      resolve(input.files[0]);
     }
   });
 };
 
-export default checkForImage;
+export default getImage;

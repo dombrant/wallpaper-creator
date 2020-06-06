@@ -1,10 +1,6 @@
-import getDimensions from "./getDimensions.js";
-
-const sendRequest = async () => {
-  const { width, height } = getDimensions();
-
+const sendRequest = async (image, width, height) => {
   const formData = new FormData();
-  formData.append("image", document.querySelector("input").files[0]);
+  formData.append("image", image);
   formData.append("width", width);
   formData.append("height", height);
 

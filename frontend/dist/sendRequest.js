@@ -1,1 +1,1 @@
-import getDimensions from"./getDimensions.js";const sendRequest=async()=>{const{width:e,height:t}=getDimensions(),n=new FormData;n.append("image",document.querySelector("input").files[0]),n.append("width",e),n.append("height",t);try{return(await fetch("/api",{method:"POST",body:n})).json()}catch(e){return e}};export default sendRequest;
+const sendRequest=async(e,t,a)=>{const n=new FormData;n.append("image",e),n.append("width",t),n.append("height",a);try{return(await fetch("/api",{method:"POST",body:n})).json()}catch(e){return e}};export default sendRequest;
