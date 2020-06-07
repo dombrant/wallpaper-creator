@@ -2,6 +2,7 @@ import getDimensions from "./getDimensions.js";
 import getImage from "./getImage.js";
 import activateSpinner from "./activateSpinner.js";
 import sendRequest from "./sendRequest.js";
+import showWallpaper from "./showWallpaper.js";
 
 document.querySelector("button").addEventListener("click", async () => {
   try {
@@ -12,6 +13,7 @@ document.querySelector("button").addEventListener("click", async () => {
     // Otherwise the image can't be located becuase activateSpinner() removes the input tag from the HTML
     const request = await sendRequest(image, width, height);
     console.log(request);
+    showWallpaper(request.file);
   } catch (error) {
     return error;
   }

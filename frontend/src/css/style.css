@@ -50,6 +50,7 @@ button:active {
   justify-content: center;
 }
 
-img {
-  display: none;
+.wallpaper {
+  width: 200px;
+  height: auto;
 }

@@ -21,12 +21,16 @@ app.post("/api", upload.single("image"), async (request, response) => {
   }
 
   try {
-    const wallpaper = await createWallpaper(
+    const wallpaperBuffer = await createWallpaper(
       request.file.buffer,
       parseInt(request.body.width),
       parseInt(request.body.height)
     );
-    return response.status(200).send({ file: wallpaper });
+    const wallpaperBase64 = Buffer.from(wallpaperBuffer, "binary").toString(
+      "base64"
+    );
+    // Send the image in base64 form
+    return response.status(200).send({ file: wallpaperBase64 });
   } catch (error) {
     return response
       .status(500)

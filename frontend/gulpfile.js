@@ -32,7 +32,7 @@ const css = async () => {
   const postCssPlugins = [
     uncss({
       html: ["src/index.html"],
-      ignore: [".spinner"],
+      ignore: [".spinner", ".wallpaper"],
     }),
     cssnano(),
   ];
