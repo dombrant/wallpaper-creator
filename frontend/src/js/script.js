@@ -12,7 +12,6 @@ document.querySelector("button").addEventListener("click", async () => {
     // Activate the spinner after the width, height, and image are fetched
     // Otherwise the image can't be located becuase activateSpinner() removes the input tag from the HTML
     const request = await sendRequest(image, width, height);
-    console.log(request);
     showWallpaper(request.file);
   } catch (error) {
     return error;
