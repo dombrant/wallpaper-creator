@@ -1,15 +1,19 @@
-header {
+header,
+footer {
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100vw;
   min-height: 10vh;
-  font-family: var(--cursive);
-  font-size: 48px;
-  font-weight: bold;
   text-align: center;
   color: var(--white);
   background-color: var(--light-blue-primary);
+}
+
+header {
+  align-items: center;
+  justify-content: center;
+  font-family: var(--cursive);
+  font-size: 48px;
+  font-weight: bold;
 }
 
 @media (max-width: 800px) {
@@ -70,4 +74,20 @@ button:active {
 .wallpaper {
   width: 200px;
   height: auto;
+}
+
+footer {
+  bottom: 0;
+  position: fixed;
+  flex-direction: column;
+  justify-content: center;
+}
+
+footer > p {
+  margin-top: 5px;
+  font-family: var(--cursive);
+}
+
+footer > a {
+  color: var(--white);
 }
