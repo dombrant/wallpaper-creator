@@ -3,12 +3,18 @@ header {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 10vh;
+  min-height: 10vh;
   font-size: 48px;
   font-weight: bold;
   text-align: center;
   color: var(--white);
   background-color: var(--light-blue-primary);
+}
+
+@media (max-width: 800px) {
+  header {
+    font-size: 40px;
+  }
 }
 
 .vertical-center {
@@ -19,6 +25,12 @@ header {
 
 h3 {
   font-size: 32px;
+}
+
+@media (max-width: 800px) {
+  h3 {
+    font-size: 24px;
+  }
 }
 
 .button-container {
