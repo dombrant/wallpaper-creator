@@ -1,1 +1,0 @@
-const sendRequest=async(e,t,a)=>{const n=new FormData;n.append("image",e),n.append("width",t),n.append("height",a);try{return(await fetch("/api",{method:"POST",body:n})).json()}catch(e){return e}};export default sendRequest;

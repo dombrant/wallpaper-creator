@@ -1,1 +1,0 @@
-const showWallpaper=e=>{document.querySelector(".main-section").innerHTML='\n    <div class="vertical-center">\n      <h3>Done!</h3>\n      <img class="wallpaper" title="wallpaper">\n    </div>',document.querySelector(".wallpaper").src="data:image/jpeg;base64,"+e};export default showWallpaper;

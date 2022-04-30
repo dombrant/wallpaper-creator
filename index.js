@@ -7,10 +7,10 @@ const upload = multer({ storage: multer.memoryStorage() });
 // Tells multer to store the file in memory and not on the disk
 const port = process.env.PORT || 3000;
 
-app.use(express.static(__dirname + "/frontend/dist"));
+app.use(express.static(__dirname + "/frontend"));
 
 app.get("/", (request, response) =>
-  response.sendFile(__dirname + "/frontend/dist/index.html")
+  response.sendFile(__dirname + "/frontend/index.html")
 );
 
 app.post("/api", upload.single("image"), async (request, response) => {

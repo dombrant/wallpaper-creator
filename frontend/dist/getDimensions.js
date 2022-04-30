@@ -1,1 +1,0 @@
-import devices from"./devices.js";const getDimensions=()=>{const e=document.querySelector("select").value,{width:t,height:i}=devices[e];return{width:t,height:i}};export default getDimensions;
